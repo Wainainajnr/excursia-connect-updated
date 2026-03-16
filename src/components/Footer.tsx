@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Plane, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { ExcursiaLogo } from './ExcursiaLogo';
 
 const Footer = () => {
   return (
@@ -8,13 +9,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="bg-primary p-2 rounded-full">
-                <Plane className="h-5 w-5 text-primary-foreground" />
-              </div>
+            <div className="flex flex-col mb-6">
+              <ExcursiaLogo className="h-20 w-auto mb-4" textColor="#ffffff" />
               <div>
-                <h3 className="text-lg font-heading font-semibold">Excursia Connect</h3>
-                <p className="text-xs text-background/80">epic travel. epic expectations.</p>
+                <h3 className="text-xl font-heading font-semibold">Excursia Connect</h3>
+                <p className="text-xs text-background/80">epic travel. exceptional events.</p>
               </div>
             </div>
             <p className="text-sm text-background/70 mb-4">

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import excursiaLogo from '@/assets/excursia-logo.png';
+import { ExcursiaLogo } from './ExcursiaLogo';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,26 +26,22 @@ const Header = () => {
     { path: '/contact', label: 'Contact Us' },
   ];
 
+  const isHomePage = location.pathname === '/';
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'header-solid' : 'header-transparent'
+        !isHomePage || isScrolled ? 'header-solid' : 'header-transparent'
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-36">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <img 
-              src={excursiaLogo} 
-              alt="Excursia Connect" 
-              className="h-16 w-auto group-hover:scale-105 transition-transform"
+            <ExcursiaLogo 
+              className="h-40 w-auto group-hover:scale-105 transition-transform"
+              textColor={!isHomePage || isScrolled ? "#0e4e60" : "white"}
             />
-            <div>
-              <p className={`text-xs ${isScrolled ? 'text-muted-foreground' : 'text-white/90'}`}>
-                Epic Travel. Epic Expectations.
-              </p>
-            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -56,10 +52,10 @@ const Header = () => {
                 to={item.path}
                 className={`font-medium transition-colors ${
                   location.pathname === item.path
-                    ? isScrolled
+                    ? (!isHomePage || isScrolled)
                       ? 'text-primary'
                       : 'text-white font-semibold'
-                    : isScrolled
+                    : (!isHomePage || isScrolled)
                     ? 'text-foreground hover:text-primary'
                     : 'text-white/90 hover:text-white'
                 }`}
