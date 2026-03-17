@@ -39,7 +39,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center group py-1 lg:py-4 shrink-0 overflow-hidden">
             <ExcursiaLogo 
-              className="h-10 sm:h-12 lg:h-28 max-h-[3rem] lg:max-h-none w-auto group-hover:scale-105 transition-all duration-500"
+              className="h-16 sm:h-18 lg:h-28 max-h-[4rem] lg:max-h-none w-auto group-hover:scale-105 transition-all duration-500"
               textColor={!isHomePage || isScrolled ? "#000000" : "white"}
             />
           </Link>

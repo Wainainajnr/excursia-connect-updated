@@ -169,6 +169,9 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Admin-Added Posters - Latest Offers & Events */}
+      <PosterGrid />
+
       {/* Featured Services - Why Choose Excursia Connect */}
       <section className="py-32 bg-white">
         <div className="container mx-auto px-4">
@@ -220,9 +223,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Admin-Added Posters */}
-      <PosterGrid />
 
       {/* Newsletter Signup */}
       <Newsletter />

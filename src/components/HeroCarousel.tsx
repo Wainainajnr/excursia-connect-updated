@@ -30,7 +30,7 @@ const HeroCarousel = () => {
 
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative h-[75vh] md:h-screen overflow-hidden">
       {/* Slides */}
       <div className="w-full h-full p-4 md:p-8">
         <div className="h-full w-full rounded-luxury overflow-hidden relative shadow-2xl">

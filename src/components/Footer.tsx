@@ -98,9 +98,12 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-background/20 pt-4 text-center">
+        <div className="border-t border-background/20 pt-8 flex flex-col items-center text-center gap-4">
           <p className="text-sm text-background/70">
-            &copy; {new Date().getFullYear()} Excursia Connect. All rights reserved.
+            &copy; 2026 Excursia Connect. All rights reserved.
+          </p>
+          <p className="text-xs text-background/50 italic tracking-widest lowercase">
+            Designed and Developed by <a href="https://ericwainaina.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[#C17F59] hover:text-white transition-colors">nexeric innovation</a>
           </p>
         </div>
       </div>
