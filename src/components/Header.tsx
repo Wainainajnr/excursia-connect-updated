@@ -28,20 +28,29 @@ const Header = () => {
   ];
 
   const isHomePage = location.pathname === '/';
+  const isHeaderCompact = !isHomePage || isScrolled;
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        !isHomePage || isScrolled ? 'header-solid' : 'header-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isHeaderCompact ? 'header-solid' : 'header-transparent'
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-32 sm:h-48 lg:h-72 pt-3 lg:pt-0">
+        <div className={`flex items-center justify-between transition-all duration-500 pt-3 lg:pt-0 ${
+          isHeaderCompact ? 'h-20 sm:h-28 lg:h-36' : 'h-32 sm:h-48 lg:h-64'
+        }`}>
           {/* Logo */}
           <Link to="/" className="flex items-center group py-1 lg:py-4 shrink-0 overflow-hidden -ml-8 lg:-ml-16">
             <ExcursiaLogo 
-              className="h-32 sm:h-38 lg:h-64 max-h-[8.5rem] lg:max-h-none w-auto group-hover:scale-105 transition-all duration-500"
-              textColor={!isHomePage || isScrolled ? "#000000" : "white"}
+              className={`w-auto group-hover:scale-105 transition-all duration-700 ${
+                !isHomePage 
+                  ? 'h-18 sm:h-26 lg:h-34 max-h-[8.5rem]' 
+                  : isScrolled
+                  ? 'h-16 sm:h-20 lg:h-28 max-h-[5rem]'
+                  : 'h-24 sm:h-40 lg:h-56 max-h-[14rem]'
+              }`}
+              textColor={isHeaderCompact ? "#000000" : "white"}
             />
           </Link>
 
@@ -53,10 +62,10 @@ const Header = () => {
                 to={item.path}
                 className={`text-[10px] font-bold tracking-[0.2em] uppercase transition-colors ${
                   location.pathname === item.path
-                    ? (!isHomePage || isScrolled)
+                    ? isHeaderCompact
                       ? 'text-[#1B2A4A]'
                       : 'text-white'
-                    : (!isHomePage || isScrolled)
+                    : isHeaderCompact
                     ? 'text-foreground/70 hover:text-[#1B2A4A]'
                     : 'text-white/80 hover:text-white'
                 }`}

@@ -113,7 +113,7 @@ const Contact = () => {
   return (
     <Layout>
       {/* Page Header */}
-      <section className="pt-40 pb-20 bg-white">
+      <section className="pt-28 sm:pt-36 lg:pt-48 pb-20 bg-white">
         <div className="container mx-auto px-4 text-center">
           <span className="text-[10px] font-bold tracking-[0.4em] text-[#C17F59] uppercase mb-6 block">
             Plan Your Journey

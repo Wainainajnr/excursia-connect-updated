@@ -43,7 +43,7 @@ const RelocationOffers = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative pt-20">
+      <section className="relative pt-28 sm:pt-36 lg:pt-48">
         <div className="container mx-auto px-4 h-full py-8">
           <div className="relative h-[60vh] rounded-luxury overflow-hidden shadow-2xl">
             <img

@@ -30,7 +30,7 @@ const DestinationDetail = () => {
     setLoading(false);
   }, [id]);
 
-  if (loading) return <Layout><div className="pt-40 text-center">Loading...</div></Layout>;
+  if (loading) return <Layout><div className="pt-28 sm:pt-36 lg:pt-48 text-center">Loading...</div></Layout>;
 
   if (!destination) {
     return (
@@ -74,7 +74,7 @@ const DestinationDetail = () => {
 
         <Link
           to="/destinations"
-          className="absolute top-32 left-8 flex items-center space-x-2 text-white/80 hover:text-white transition-colors group z-20"
+          className="absolute top-24 sm:top-32 lg:top-44 left-8 flex items-center space-x-2 text-white/80 hover:text-white transition-colors group z-20"
         >
           <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
           <span className="text-[10px] font-bold tracking-widest uppercase">Back to Collection</span>
