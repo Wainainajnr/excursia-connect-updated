@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           {/* Company Info */}
           <div>
-            <div className="flex flex-col mb-4">
+            <div className="flex flex-col mb-4 -ml-8 lg:-ml-16">
               <ExcursiaLogo className="h-56 w-auto mb-3" textColor="#ffffff" />
             </div>
             <p className="text-xs text-background/70 mb-3">

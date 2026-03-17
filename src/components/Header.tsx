@@ -38,7 +38,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-32 sm:h-48 lg:h-72 pt-3 lg:pt-0">
           {/* Logo */}
-          <Link to="/" className="flex items-center group py-1 lg:py-4 shrink-0 overflow-hidden">
+          <Link to="/" className="flex items-center group py-1 lg:py-4 shrink-0 overflow-hidden -ml-8 lg:-ml-16">
             <ExcursiaLogo 
               className="h-32 sm:h-38 lg:h-64 max-h-[8.5rem] lg:max-h-none w-auto group-hover:scale-105 transition-all duration-500"
               textColor={!isHomePage || isScrolled ? "#000000" : "white"}
