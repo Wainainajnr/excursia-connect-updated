@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex flex-col mb-4">
-              <ExcursiaLogo className="h-20 w-auto mb-3" textColor="#ffffff" />
+              <ExcursiaLogo className="h-56 w-auto mb-3" textColor="#ffffff" />
             </div>
             <p className="text-xs text-background/70 mb-3">
               Your trusted partner for unforgettable travel experiences and seamless relocation services.

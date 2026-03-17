@@ -1,6 +1,7 @@
 import { MapPin, Calendar, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Poster } from '@/types/poster';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 interface PosterDetailModalProps {
@@ -9,6 +10,7 @@ interface PosterDetailModalProps {
 }
 
 const PosterDetailModal = ({ poster, onClose }: PosterDetailModalProps) => {
+  const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   // Combine cover image with additional images
@@ -110,7 +112,7 @@ const PosterDetailModal = ({ poster, onClose }: PosterDetailModalProps) => {
             <Button
               className="flex-1 rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
               onClick={() => {
-                window.location.href = '/contact';
+                navigate('/contact');
               }}
             >
               Book Now

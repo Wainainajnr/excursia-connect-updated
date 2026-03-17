@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -11,6 +12,7 @@ interface DestinationCardProps {
 }
 
 const DestinationCard = ({ image, title, location, description, price, link = '#' }: DestinationCardProps) => {
+  const navigate = useNavigate();
   return (
     <div className="destination-card bg-white rounded-luxury overflow-hidden border border-gray-100/50 group transition-all duration-500 hover:shadow-2xl">
       <div className="relative h-[28rem] overflow-hidden">
@@ -45,7 +47,7 @@ const DestinationCard = ({ image, title, location, description, price, link = '#
             className="w-full rounded-full bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white hover:text-[#1B2A4A] transition-all duration-300 py-6 text-xs font-bold tracking-[0.2em]"
             onClick={() => {
               if (link && link !== '#') {
-                window.location.href = link;
+                navigate(link);
               }
             }}
           >

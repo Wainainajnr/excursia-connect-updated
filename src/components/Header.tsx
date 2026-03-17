@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ExcursiaLogo } from './ExcursiaLogo';
@@ -8,6 +8,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,11 +36,11 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20 sm:h-20 lg:h-36 pt-3 lg:pt-0">
+        <div className="flex items-center justify-between h-32 sm:h-48 lg:h-72 pt-3 lg:pt-0">
           {/* Logo */}
           <Link to="/" className="flex items-center group py-1 lg:py-4 shrink-0 overflow-hidden">
             <ExcursiaLogo 
-              className="h-16 sm:h-18 lg:h-28 max-h-[4rem] lg:max-h-none w-auto group-hover:scale-105 transition-all duration-500"
+              className="h-32 sm:h-38 lg:h-64 max-h-[8.5rem] lg:max-h-none w-auto group-hover:scale-105 transition-all duration-500"
               textColor={!isHomePage || isScrolled ? "#000000" : "white"}
             />
           </Link>
@@ -65,7 +66,7 @@ const Header = () => {
             ))}
             <Button 
               className="rounded-full bg-[#1B2A4A] text-white hover:bg-[#1B2A4A]/90 px-8 py-6 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105"
-              onClick={() => window.location.href = '/contact'}
+              onClick={() => navigate('/contact')}
             >
               BOOK NOW
             </Button>
@@ -103,9 +104,12 @@ const Header = () => {
               </Link>
             ))}
             <div className="pt-2">
-              <Button 
+               <Button 
                 className="w-full rounded-full bg-[#1B2A4A] text-white hover:bg-[#1B2A4A]/90 py-6 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300"
-                onClick={() => window.location.href = '/contact'}
+                onClick={() => {
+                  navigate('/contact');
+                  setIsMobileMenuOpen(false);
+                }}
               >
                 BOOK NOW
               </Button>

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { getPosters } from '@/lib/posterStorage';
 
 const HeroCarousel = () => {
+  const navigate = useNavigate();
   const [slides, setSlides] = useState<any[]>([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -64,7 +66,7 @@ const HeroCarousel = () => {
                   
                   <Button 
                     className="rounded-full bg-white text-black hover:bg-white/90 px-12 py-8 text-xs font-bold tracking-[0.3em] uppercase transition-all duration-300 hover:scale-105 shadow-2xl"
-                    onClick={() => window.location.href = '/contact'}
+                    onClick={() => navigate('/contact')}
                   >
                     {slide.cta}
                   </Button>

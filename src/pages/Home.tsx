@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Route, ShieldCheck, MapPinned, Trophy, Map, Compass, Shield, Users, Award } from 'lucide-react';
 import Layout from '@/components/Layout';
 import HeroCarousel from '@/components/HeroCarousel';
@@ -19,6 +20,7 @@ import destCity from '@/assets/destination-city.jpg';
 import destCoastal from '@/assets/destination-coastal.jpg';
 
 const Home = () => {
+  const navigate = useNavigate();
   const featuredServices = [
     {
       icon: Map,
@@ -135,7 +137,7 @@ const Home = () => {
             <Button 
               variant="outline" 
               className="rounded-full border-black text-[#1B2A4A] hover:bg-[#1B2A4A] hover:text-white transition-all duration-300 text-xs font-bold tracking-[0.2em] uppercase px-8"
-              onClick={() => window.location.href = '/destinations'}
+              onClick={() => navigate('/destinations')}
             >
               VIEW COLLECTION
             </Button>
@@ -216,7 +218,7 @@ const Home = () => {
           <div className="text-center">
             <Button 
               className="rounded-full bg-[#1B2A4A] hover:bg-[#1B2A4A]/90 text-white text-xs font-bold tracking-[0.3em] px-12 py-8 h-auto uppercase transition-all duration-300 hover:scale-105 shadow-xl"
-              onClick={() => window.location.href = '/contact'}
+              onClick={() => navigate('/contact')}
             >
               PLAN YOUR ESCAPE
             </Button>

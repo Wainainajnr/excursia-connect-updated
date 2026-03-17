@@ -49,8 +49,14 @@ const Contact = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      // Show success message (no backend integration)
-      toast.success('Message sent successfully! We\'ll get back to you soon.');
+      // Format the WhatsApp message
+      const messageText = `*New Inquiry from Excursia Connect*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Subject:* ${formData.subject}%0A*Message:* ${formData.message}`;
+      const whatsappUrl = `https://wa.me/254724415820?text=${messageText}`;
+      
+      // Redirect to WhatsApp
+      window.open(whatsappUrl, '_blank');
+      
+      toast.success('Redirecting to WhatsApp...');
       
       // Reset form
       setFormData({
