@@ -1,5 +1,8 @@
+import { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import DestinationCard from '@/components/DestinationCard';
+import { getPosters } from '@/lib/posterStorage';
+import { Poster } from '@/types/poster';
 
 // Import destination images
 import destMountains from '@/assets/destination-mountains.jpg';
@@ -10,113 +13,63 @@ import heroSafari from '@/assets/hero-safari.jpg';
 import heroBeach from '@/assets/hero-beach.jpg';
 
 const Destinations = () => {
-  const allDestinations = [
-    {
-      id: 'kenya-safari',
-      image: heroSafari,
-      title: 'Kenya Safari Experience',
-      location: 'Maasai Mara, Kenya',
-      description: 'Witness the spectacular Great Migration and encounter the Big Five in one of Africa\'s most renowned wildlife reserves.',
-      price: 'From KShs 312,000',
-      link: '/destinations/kenya-safari',
-    },
-    {
-      id: 'zanzibar-beach',
-      image: heroBeach,
-      title: 'Zanzibar Beach Paradise',
-      location: 'Zanzibar, Tanzania',
-      description: 'Relax on pristine white sand beaches, explore spice plantations, and snorkel in crystal-clear turquoise waters.',
-      price: 'From KShs 175,000',
-      link: '/destinations/zanzibar-beach',
-    },
-    {
-      id: 'kilimanjaro-trek',
-      image: destMountains,
-      title: 'Mount Kilimanjaro Trek',
-      location: 'Tanzania',
-      description: 'Conquer Africa\'s highest peak with experienced guides on this challenging and rewarding mountain adventure.',
-      price: 'From KShs 400,000',
-      link: '/destinations/kilimanjaro-trek',
-    },
-    {
-      id: 'seychelles-island',
-      image: destIsland,
-      title: 'Seychelles Island Escape',
-      location: 'Seychelles',
-      description: 'Experience luxury on stunning tropical islands with world-class resorts, pristine beaches, and exceptional diving.',
-      price: 'From KShs 500,000',
-      link: '/destinations/seychelles-island',
-    },
-    {
-      id: 'marrakech-tour',
-      image: destCity,
-      title: 'Marrakech Cultural Tour',
-      location: 'Morocco',
-      description: 'Explore vibrant souks, historic palaces, and authentic Moroccan cuisine in this enchanting ancient city.',
-      price: 'From KShs 137,000',
-      link: '/destinations/marrakech-tour',
-    },
-    {
-      id: 'lamu-coastal',
-      image: destCoastal,
-      title: 'Coastal Village Retreat',
-      location: 'Lamu, Kenya',
-      description: 'Discover a tranquil coastal town with centuries-old Swahili architecture and a laid-back island atmosphere.',
-      price: 'From KShs 200,000',
-      link: '/destinations/lamu-coastal',
-    },
-  ];
+  const [dynamicDestinations, setDynamicDestinations] = useState<Poster[]>([]);
 
-  const recommendedPackages = [
-    {
-      id: 'ethiopian-highlands',
-      image: destMountains,
-      title: 'Highland Expedition',
-      location: 'Ethiopian Highlands',
-      description: 'Trek through stunning highland terrain with expert guides and experience authentic local culture.',
-      price: 'From KShs 262,000',
-      link: '/destinations/ethiopian-highlands',
-    },
-    {
-      id: 'mauritius-luxury',
-      image: destIsland,
-      title: 'Mauritius Luxury Package',
-      location: 'Mauritius',
-      description: 'All-inclusive luxury resort experience with water sports, spa treatments, and gourmet dining.',
-      price: 'From KShs 437,000',
-      link: '/destinations/mauritius-luxury',
-    },
-    {
-      id: 'garden-route',
-      image: destCoastal,
-      title: 'Coastal Road Trip',
-      location: 'South African Coast',
-      description: 'Drive the spectacular Garden Route with stops at charming coastal towns and scenic viewpoints.',
-      price: 'From KShs 350,000',
-      link: '/destinations/garden-route',
-    },
-  ];
+  useEffect(() => {
+    const posters = getPosters();
+    setDynamicDestinations(posters.filter(p => p.category === 'destination'));
+  }, []);
+
+  const allDestinations = dynamicDestinations.map(p => ({
+    id: p.id,
+    image: p.image,
+    title: p.title,
+    location: p.location || '',
+    description: p.description,
+    price: p.price,
+    link: `/destinations/${p.id}`,
+  }));
+
+  const recommendedPackages = dynamicDestinations
+    .filter(p => p.category === 'offer' || p.category === 'destination')
+    .slice(0, 3)
+    .map(p => ({
+      id: p.id,
+      image: p.image,
+      title: p.title,
+      location: p.location || '',
+      description: p.description,
+      price: p.price,
+      link: `/destinations/${p.id}`,
+    }));
 
   return (
     <Layout>
       {/* Page Header */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-primary/10 to-background">
+      <section className="pt-40 pb-20 bg-white">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
-            Explore Our Destinations
+          <span className="text-[10px] font-bold tracking-[0.4em] text-[#C17F59] uppercase mb-6 block">
+            Discover Excellence
+          </span>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-luxury text-[#1B2A4A] mb-8 leading-tight">
+            Our <span className="italic">Destinations</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            From pristine beaches to thrilling safaris, discover handpicked destinations that promise unforgettable experiences and epic adventures.
+          <div className="w-24 h-1 bg-[#C17F59] mx-auto mb-10 rounded-full" />
+          <p className="text-xl md:text-2xl text-muted-foreground font-serif italic max-w-3xl mx-auto">
+            From the majestic Mara to pristine island echoes, discover handpicked sanctuaries of adventure.
           </p>
         </div>
       </section>
 
       {/* All Destinations Grid */}
-      <section className="py-16 bg-background">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-12">
-            Top Destinations
-          </h2>
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-5xl font-luxury text-[#1B2A4A] mb-6">
+              The <span className="italic">Collection</span>
+            </h2>
+            <div className="w-20 h-1 bg-[#C17F59] mx-auto mb-4 rounded-full" />
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {allDestinations.map((destination, index) => (
@@ -127,14 +80,20 @@ const Destinations = () => {
       </section>
 
       {/* Recommended Section */}
-      <section className="py-20 bg-muted">
+      <section className="py-32 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-            Recommended for You
-          </h2>
-          <p className="text-muted-foreground mb-12 max-w-2xl">
-            Based on popular choices and current travel trends, these handpicked packages offer exceptional value and unforgettable experiences.
-          </p>
+          <div className="text-center mb-20">
+            <span className="text-[10px] font-bold tracking-[0.4em] text-[#C17F59] uppercase mb-6 block">
+              Curated Selection
+            </span>
+            <h2 className="text-3xl md:text-5xl font-luxury text-[#1B2A4A] mb-6">
+              Recommended for <span className="italic">You</span>
+            </h2>
+            <div className="w-20 h-1 bg-[#C17F59] mx-auto mb-8 rounded-full" />
+            <p className="text-muted-foreground font-serif italic text-lg max-w-2xl mx-auto">
+              Based on popular choices and current travel trends, these handpicked packages offer exceptional value and unforgettable experiences.
+            </p>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {recommendedPackages.map((pkg, index) => (

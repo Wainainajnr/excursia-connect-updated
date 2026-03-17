@@ -107,13 +107,17 @@ const Contact = () => {
   return (
     <Layout>
       {/* Page Header */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-primary/10 to-background">
+      <section className="pt-40 pb-20 bg-white">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
-            Get in Touch
+          <span className="text-[10px] font-bold tracking-[0.4em] text-[#C17F59] uppercase mb-6 block">
+            Plan Your Journey
+          </span>
+          <h1 className="text-4xl md:text-7xl lg:text-8xl font-luxury text-[#1B2A4A] mb-8 leading-tight">
+            Get in <span className="italic">Touch</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Have questions about your next adventure? We're here to help plan your perfect journey.
+          <div className="w-24 h-1 bg-[#C17F59] mx-auto mb-10 rounded-full" />
+          <p className="text-xl md:text-2xl text-muted-foreground font-serif italic max-w-3xl mx-auto">
+            Our private travel consultants are ready to craft your next extraordinary escape.
           </p>
         </div>
       </section>
@@ -121,14 +125,14 @@ const Contact = () => {
       {/* Contact Info Cards */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-24">
             {contactInfo.map((info, index) => (
-              <div key={index} className="bg-card p-6 rounded-xl text-center shadow-sm hover:shadow-md transition-shadow">
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-accent/10 rounded-full mb-4">
-                  <info.icon className="h-6 w-6 text-accent" />
+              <div key={index} className="bg-[#F9F9F9] p-10 rounded-luxury border border-gray-100/50 text-center transition-all duration-500 hover:bg-white hover:shadow-xl group">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-white shadow-sm rounded-full mb-8 group-hover:scale-110 transition-transform duration-500">
+                  <info.icon className="h-6 w-6 text-[#1B2A4A]" />
                 </div>
-                <h3 className="font-heading font-semibold mb-2">{info.title}</h3>
-                <p className="text-muted-foreground text-sm">{info.details}</p>
+                <h3 className="font-luxury font-bold text-xl mb-4 text-[#1B2A4A] uppercase tracking-tight">{info.title}</h3>
+                <p className="text-muted-foreground text-sm font-serif italic">{info.details}</p>
               </div>
             ))}
           </div>
@@ -137,9 +141,9 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <div className="bg-card p-8 rounded-xl shadow-lg">
-                <h2 className="text-2xl md:text-3xl font-heading font-bold mb-6">
-                  Send Us a Message
+              <div className="bg-white p-12 rounded-luxury border border-gray-100 shadow-2xl">
+                <h2 className="text-3xl md:text-4xl font-luxury text-[#1B2A4A] mb-10 leading-tight">
+                  Send Us a <span className="italic">Message</span>
                 </h2>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -225,9 +229,9 @@ const Contact = () => {
 
                   <Button 
                     type="submit"
-                    className="w-full btn-pill bg-primary text-primary-foreground hover:bg-primary/90 text-lg py-6"
+                    className="w-full rounded-full bg-[#1B2A4A] text-white hover:bg-[#1B2A4A]/90 py-8 text-xs font-bold tracking-[0.3em] uppercase transition-all duration-300 shadow-xl"
                   >
-                    Send Message
+                    SEND MESSAGE
                   </Button>
                 </form>
               </div>
@@ -273,13 +277,16 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-primary to-accent p-6 rounded-xl shadow-lg text-white">
-                <h3 className="font-heading font-semibold text-xl mb-3">Ready to Book?</h3>
-                <p className="text-white/90 text-sm mb-4">
-                  Call us now to speak with one of our travel experts and start planning your dream vacation.
+              <div className="bg-[#1B2A4A] p-10 rounded-luxury shadow-2xl text-white">
+                <h3 className="font-luxury font-bold text-2xl mb-4 uppercase tracking-tight">Ready to Book?</h3>
+                <p className="text-white/60 text-sm mb-8 font-serif italic leading-relaxed">
+                  Call us now to speak with one of our private travel consultants and start planning your return to majesty.
                 </p>
-                <Button className="w-full btn-pill bg-white text-primary hover:bg-white/90">
-                  Call +254 700 000 000
+                <Button 
+                  className="w-full rounded-full bg-[#C17F59] text-[#1B2A4A] hover:bg-[#C17F59]/90 py-6 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300"
+                  onClick={() => window.location.href = 'tel:+254724415820'}
+                >
+                  CALL +254 724 415 820
                 </Button>
               </div>
             </div>

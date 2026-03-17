@@ -35,12 +35,12 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-36">
+        <div className="flex items-center justify-between h-20 sm:h-20 lg:h-36 pt-3 lg:pt-0">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
+          <Link to="/" className="flex items-center group py-1 lg:py-4 shrink-0 overflow-hidden">
             <ExcursiaLogo 
-              className="h-40 w-auto group-hover:scale-105 transition-transform"
-              textColor={!isHomePage || isScrolled ? "#0e4e60" : "white"}
+              className="h-10 sm:h-12 lg:h-28 max-h-[3rem] lg:max-h-none w-auto group-hover:scale-105 transition-all duration-500"
+              textColor={!isHomePage || isScrolled ? "#000000" : "white"}
             />
           </Link>
 
@@ -50,64 +50,64 @@ const Header = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`font-medium transition-colors ${
+                className={`text-[10px] font-bold tracking-[0.2em] uppercase transition-colors ${
                   location.pathname === item.path
                     ? (!isHomePage || isScrolled)
-                      ? 'text-primary'
-                      : 'text-white font-semibold'
+                      ? 'text-[#1B2A4A]'
+                      : 'text-white'
                     : (!isHomePage || isScrolled)
-                    ? 'text-foreground hover:text-primary'
-                    : 'text-white/90 hover:text-white'
+                    ? 'text-foreground/70 hover:text-[#1B2A4A]'
+                    : 'text-white/80 hover:text-white'
                 }`}
               >
                 {item.label}
               </Link>
             ))}
             <Button 
-              className="btn-pill bg-secondary text-secondary-foreground hover:bg-secondary/90"
+              className="rounded-full bg-[#1B2A4A] text-white hover:bg-[#1B2A4A]/90 px-8 py-6 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105"
               onClick={() => window.location.href = '/contact'}
             >
-              Book Now
+              BOOK NOW
             </Button>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2"
+            className="lg:hidden p-3 rounded-xl bg-[#1B2A4A]/10 backdrop-blur-sm"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className={`h-6 w-6 ${isScrolled ? 'text-foreground' : 'text-white'}`} />
+              <X className="h-6 w-6 text-[#1B2A4A]" />
             ) : (
-              <Menu className={`h-6 w-6 ${isScrolled ? 'text-foreground' : 'text-white'}`} />
+              <Menu className="h-6 w-6 text-[#1B2A4A]" />
             )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <nav className="lg:hidden pb-6 space-y-4 bg-background rounded-b-lg shadow-lg">
+          <nav className="lg:hidden pb-6 space-y-2 bg-background rounded-b-2xl shadow-xl px-4">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`block px-4 py-2 font-medium transition-colors ${
+                className={`block px-4 py-3 text-xs font-bold tracking-[0.15em] uppercase rounded-xl transition-colors ${
                   location.pathname === item.path
-                    ? 'text-primary bg-primary/10'
-                    : 'text-foreground hover:text-primary hover:bg-muted'
+                    ? 'text-[#1B2A4A] bg-gray-100'
+                    : 'text-foreground/70 hover:text-[#1B2A4A] hover:bg-gray-50'
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <div className="px-4">
+            <div className="pt-2">
               <Button 
-                className="btn-pill w-full bg-secondary text-secondary-foreground hover:bg-secondary/90"
+                className="w-full rounded-full bg-[#1B2A4A] text-white hover:bg-[#1B2A4A]/90 py-6 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300"
                 onClick={() => window.location.href = '/contact'}
               >
-                Book Now
+                BOOK NOW
               </Button>
             </div>
           </nav>

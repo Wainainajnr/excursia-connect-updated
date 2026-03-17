@@ -1,86 +1,71 @@
-import { Home, Package, MapPin, CheckCircle, Plane, FileText } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Home, Package, MapPin, CheckCircle, Plane, FileText, Globe } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
+import { getPosters } from '@/lib/posterStorage';
+import { Poster } from '@/types/poster';
 import relocationHero from '@/assets/relocation-hero.jpg';
 import destCoastal from '@/assets/destination-coastal.jpg';
 import heroBeach from '@/assets/hero-beach.jpg';
 import destCity from '@/assets/destination-city.jpg';
 
 const RelocationOffers = () => {
-  const relocationServices = [
-    {
-      icon: Home,
-      title: 'Housing Assistance',
-      description: 'Find your perfect home with our comprehensive property search and viewing services.',
-    },
-    {
-      icon: FileText,
-      title: 'Documentation Support',
-      description: 'Navigate visa requirements, work permits, and all necessary legal documentation.',
-    },
-    {
-      icon: MapPin,
-      title: 'Area Orientation',
-      description: 'Get acquainted with local neighborhoods, schools, healthcare, and amenities.',
-    },
-    {
-      icon: Plane,
-      title: 'Moving Logistics',
-      description: 'Coordinated shipping, packing, and transportation of your belongings.',
-    },
-  ];
+  const [dynamicPosters, setDynamicPosters] = useState<Poster[]>([]);
 
-  const specialOffers = [
-    {
-      image: heroBeach,
-      title: 'Coastal Getaway Package',
-      location: 'Mombasa, Kenya',
-      originalPrice: 'KShs 300,000',
-      discountedPrice: 'KShs 212,000',
-      discount: '30% OFF',
-      features: ['5 nights all-inclusive', 'Airport transfers', 'Water sports activities', 'Spa treatment'],
-    },
-    {
-      image: destCity,
-      title: 'Cultural Heritage Tour',
-      location: 'Stone Town, Zanzibar',
-      originalPrice: 'KShs 225,000',
-      discountedPrice: 'KShs 162,000',
-      discount: '28% OFF',
-      features: ['4 nights boutique hotel', 'Guided city tours', 'Spice farm visit', 'Sunset dhow cruise'],
-    },
-    {
-      image: destCoastal,
-      title: 'Island Hopping Adventure',
-      location: 'Lamu Archipelago',
-      originalPrice: 'KShs 400,000',
-      discountedPrice: 'KShs 300,000',
-      discount: '25% OFF',
-      features: ['7 nights island hopping', 'Snorkeling excursions', 'Traditional dhow sailing', 'Beach activities'],
-    },
-  ];
+  useEffect(() => {
+    setDynamicPosters(getPosters());
+  }, []);
+
+  const relocationIcons: Record<string, any> = {
+    'r1': Home,
+    'r2': FileText,
+    'r3': MapPin,
+    'r4': Plane,
+  };
+
+  const relocationServices = dynamicPosters.filter(p => p.category === 'relocation').map(p => ({
+    icon: relocationIcons[p.id] || Globe,
+    title: p.title,
+    description: p.description,
+  }));
+
+  const specialOffers = dynamicPosters.filter(p => p.category === 'offer').map(p => ({
+    image: p.image,
+    title: p.title,
+    location: p.location || 'Special Offer',
+    originalPrice: '',
+    discountedPrice: p.price,
+    discount: 'SPECIAL VALUE',
+    features: [p.description],
+    id: p.id
+  }));
 
   return (
     <Layout>
       {/* Hero Section */}
       <section className="relative pt-20">
-        <div className="relative h-[60vh] overflow-hidden">
-          <img
-            src={relocationHero}
-            alt="Relocation services - beautiful home in Kenya"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 to-foreground/40" />
-          
-          <div className="absolute inset-0 flex items-center">
-            <div className="container mx-auto px-4">
-              <div className="max-w-2xl text-white">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
-                  Relocation Services & Special Offers
-                </h1>
-                <p className="text-xl md:text-2xl text-white/90">
-                  Seamlessly transition to your new life in Kenya with our comprehensive relocation support.
-                </p>
+        <div className="container mx-auto px-4 h-full py-8">
+          <div className="relative h-[60vh] rounded-luxury overflow-hidden shadow-2xl">
+            <img
+              src={relocationHero}
+              alt="Relocation services"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-[#1B2A4A]/40" />
+            
+            <div className="absolute inset-0 flex items-center">
+              <div className="container mx-auto px-8 md:px-12">
+                <div className="max-w-3xl text-white">
+                  <span className="text-[10px] font-bold tracking-[0.4em] text-[#C17F59] uppercase mb-6 block">
+                    Seamless Transitions
+                  </span>
+                  <h1 className="text-4xl md:text-6xl font-luxury mb-8 leading-tight">
+                    Relocation <span className="italic font-serif">Services</span> & Offers
+                  </h1>
+                  <p className="text-lg md:text-xl text-white/80 font-serif italic max-w-2xl leading-relaxed">
+                    Experience a smooth transition to your new life in Kenya with our bespoke, high-touch relocation support.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -91,43 +76,42 @@ const RelocationOffers = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-              Our Relocation Service
+          <div className="text-center mb-24 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-luxury text-[#1B2A4A] mb-8 leading-tight">
+              Our <span className="italic">Relocation</span> Expertise
             </h2>
+            <div className="w-24 h-1 bg-[#C17F59] mx-auto mb-10 rounded-full" />
             
-            <div className="prose prose-lg max-w-none mb-12">
-              <p className="text-muted-foreground text-lg leading-relaxed mb-4">
-                {/* Replace with your company description */}
-                At Excursia Connect, we understand that relocating to a new country is both exciting and challenging. Our dedicated relocation team specializes in helping Kenyans living abroad make a smooth transition back home. Whether you're planning to retire in Kenya, start a new business, or simply return to your roots, we're here to make the process seamless.
+            <div className="space-y-8">
+              <p className="text-xl text-muted-foreground font-serif italic leading-relaxed">
+                At Excursia Connect, we understand that relocating to a new country is an art of transition.
               </p>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-4">
-                With years of experience in international relocation services, we provide comprehensive support from initial planning through settling in. Our local expertise and extensive network ensure you'll have everything you need to start your new chapter with confidence.
-              </p>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                From finding the perfect neighborhood to navigating legal requirements, securing quality schools for your children, and connecting you with essential services—we handle every detail so you can focus on what matters most: enjoying your homecoming.
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Our dedicated white-glove team specializes in helping Kenyans living abroad make a smooth homecoming. Whether you're planning to retire in majesty, launch a new venture, or simply return to your roots, we ensure every detail of your journey is handled with grace and precision.
               </p>
             </div>
+          </div>
 
             {/* Service Features Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
               {relocationServices.map((service, index) => (
-                <div key={index} className="flex items-start space-x-4 p-6 bg-card rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div key={index} className="flex items-start space-x-8 p-10 bg-white rounded-luxury border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                      <service.icon className="h-6 w-6 text-accent" />
+                    <div className="w-16 h-16 bg-[#F9F9F9] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                      <service.icon className="h-7 w-7 text-[#1B2A4A]" />
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-heading font-semibold text-lg mb-2">{service.title}</h3>
-                    <p className="text-muted-foreground">{service.description}</p>
+                    <h3 className="font-luxury font-bold text-xl mb-4 text-[#1B2A4A]">{service.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{service.description}</p>
                   </div>
                 </div>
               ))}
             </div>
 
             <div className="text-center">
-              <Button className="btn-pill bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6">
-                Schedule a Consultation
+              <Button className="rounded-full bg-[#1B2A4A] text-white hover:bg-[#1B2A4A]/90 text-xs font-bold tracking-[0.3em] px-12 py-8 h-auto uppercase transition-all duration-300 hover:scale-105 shadow-xl">
+                SCHEDULE A CONSULTATION
               </Button>
             </div>
           </div>
@@ -137,53 +121,57 @@ const RelocationOffers = () => {
       {/* Special Offers Section */}
       <section className="py-20 bg-gradient-to-b from-muted to-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-              Special Travel Offers
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-5xl font-luxury text-[#1B2A4A] mb-8 leading-tight">
+              Special <span className="italic">Travel</span> Offers
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Limited-time packages featuring incredible destinations at unbeatable prices. Book now and save big on your next adventure!
+            <div className="w-24 h-1 bg-[#C17F59] mx-auto mb-10 rounded-full" />
+            <p className="text-xl text-muted-foreground font-serif italic max-w-2xl mx-auto leading-relaxed">
+              Curated limited-time collections for the discerning traveler.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {specialOffers.map((offer, index) => (
-              <div key={index} className="bg-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="relative h-56">
+              <div key={index} className="group bg-white rounded-luxury overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700">
+                <div className="relative h-72 overflow-hidden">
                   <img
                     src={offer.image}
                     alt={offer.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute top-4 right-4 bg-secondary text-secondary-foreground px-4 py-2 rounded-full font-bold text-lg shadow-lg">
+                  <div className="absolute top-6 right-6 bg-[#C17F59] text-[#1B2A4A] px-6 py-2 rounded-full font-bold text-sm tracking-widest shadow-xl z-20">
                     {offer.discount}
                   </div>
+                  <div className="absolute inset-0 bg-[#1B2A4A]/20 group-hover:bg-[#1B2A4A]/10 transition-colors" />
                 </div>
 
-                <div className="p-6">
-                  <div className="flex items-center space-x-2 text-muted-foreground mb-2">
-                    <MapPin className="h-4 w-4" />
-                    <span className="text-sm">{offer.location}</span>
+                <div className="p-10">
+                  <div className="flex items-center space-x-2 text-muted-foreground mb-4 tracking-[0.2em] text-[10px] font-bold">
+                    <MapPin className="h-3 w-3 text-[#C17F59]" />
+                    <span>{offer.location}</span>
                   </div>
 
-                  <h3 className="text-2xl font-heading font-semibold mb-3">{offer.title}</h3>
+                  <h3 className="text-xl font-luxury text-[#1B2A4A] mb-6 leading-tight">{offer.title}</h3>
 
-                  <div className="flex items-baseline space-x-3 mb-4">
-                    <span className="text-3xl font-bold text-primary">{offer.discountedPrice}</span>
-                    <span className="text-lg text-muted-foreground line-through">{offer.originalPrice}</span>
+                  <div className="flex items-baseline space-x-4 mb-8">
+                    <span className="text-2xl font-bold text-[#1B2A4A]">{offer.discountedPrice}</span>
+                    {offer.originalPrice && (
+                      <span className="text-sm text-muted-foreground line-through italic">{offer.originalPrice}</span>
+                    )}
                   </div>
 
-                  <ul className="space-y-2 mb-6">
+                  <ul className="space-y-4 mb-10 border-t border-gray-50 pt-8">
                     {offer.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start space-x-2 text-sm">
-                        <CheckCircle className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                      <li key={idx} className="flex items-start space-x-3 text-sm text-muted-foreground font-serif italic">
+                        <CheckCircle className="h-4 w-4 text-[#C17F59] flex-shrink-0 mt-0.5" />
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <Button className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
-                    Book Now
+                  <Button className="w-full rounded-full bg-[#1B2A4A] text-white hover:bg-[#1B2A4A]/90 py-8 text-xs font-bold tracking-[0.3em] uppercase transition-all duration-300">
+                    DISCOVER OFFER
                   </Button>
                 </div>
               </div>

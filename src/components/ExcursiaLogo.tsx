@@ -1,6 +1,6 @@
 export const ExcursiaLogo = ({
   className = "",
-  textColor = "#0e4e60", // Default dark blue color 
+  textColor = "#1B2A4A", // Default Deep Navy color 
 }: {
   className?: string;
   textColor?: string;

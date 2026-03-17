@@ -7,5 +7,9 @@ export interface Poster {
   location?: string;
   date: string;
   price: string;
+  category: 'destination' | 'offer' | 'relocation' | 'event' | 'hero';
+  longDescription?: string;
+  highlights?: string[];
+  included?: string[];
   createdAt: string;
 }

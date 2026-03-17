@@ -4,19 +4,15 @@ import { ExcursiaLogo } from './ExcursiaLogo';
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground text-background py-12">
+    <footer className="bg-foreground text-background py-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           {/* Company Info */}
           <div>
-            <div className="flex flex-col mb-6">
-              <ExcursiaLogo className="h-20 w-auto mb-4" textColor="#ffffff" />
-              <div>
-                <h3 className="text-xl font-heading font-semibold">Excursia Connect</h3>
-                <p className="text-xs text-background/80">epic travel. exceptional events.</p>
-              </div>
+            <div className="flex flex-col mb-4">
+              <ExcursiaLogo className="h-20 w-auto mb-3" textColor="#ffffff" />
             </div>
-            <p className="text-sm text-background/70 mb-4">
+            <p className="text-xs text-background/70 mb-3">
               Your trusted partner for unforgettable travel experiences and seamless relocation services.
             </p>
             {/* Social Media */}
@@ -38,30 +34,30 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-heading font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-white mb-5">Quick Links</h4>
+            <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-sm text-background/70 hover:text-accent transition-colors">
+                <Link to="/" className="text-xs text-white/60 hover:text-white transition-colors tracking-widest uppercase">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/destinations" className="text-sm text-background/70 hover:text-accent transition-colors">
+                <Link to="/destinations" className="text-xs text-white/60 hover:text-white transition-colors tracking-widest uppercase">
                   Destinations
                 </Link>
               </li>
               <li>
-                <Link to="/relocation-offers" className="text-sm text-background/70 hover:text-accent transition-colors">
+                <Link to="/relocation-offers" className="text-xs text-white/60 hover:text-white transition-colors tracking-widest uppercase">
                   Relocation & Offers
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-sm text-background/70 hover:text-accent transition-colors">
+                <Link to="/about" className="text-xs text-white/60 hover:text-white transition-colors tracking-widest uppercase">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-sm text-background/70 hover:text-accent transition-colors">
+                <Link to="/contact" className="text-xs text-white/60 hover:text-white transition-colors tracking-widest uppercase">
                   Contact
                 </Link>
               </li>
@@ -70,39 +66,39 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-heading font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-sm text-background/70">
-              <li>Safari Tours</li>
-              <li>Beach Vacations</li>
-              <li>Wildlife Experiences</li>
-              <li>Relocation Services</li>
-              <li>Special Travel Packages</li>
-              <li>Group Tours</li>
+            <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-white mb-5">Services</h4>
+            <ul className="space-y-3 text-xs text-white/60 tracking-widest">
+              <li>Safari tours</li>
+              <li>Beach vacations</li>
+              <li>Wildlife experiences</li>
+              <li>Relocation services</li>
+              <li>Special travel packages</li>
+              <li>Group tours</li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-heading font-semibold mb-4">Contact Us</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start space-x-2 text-sm">
-                <MapPin className="h-4 w-4 text-accent mt-1 flex-shrink-0" />
-                <span className="text-background/70">Spur Mall — 2nd Floor</span>
+            <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-white mb-5">Contact Us</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start space-x-3 text-xs tracking-widest">
+                <MapPin className="h-4 w-4 text-[#C17F59] mt-0.5 flex-shrink-0" />
+                <span className="text-white/60 leading-relaxed lowercase">spur mall — 2nd floor</span>
               </li>
-              <li className="flex items-center space-x-2 text-sm">
-                <Phone className="h-4 w-4 text-accent flex-shrink-0" />
-                <span className="text-background/70">0724415820</span>
+              <li className="flex items-center space-x-3 text-xs tracking-widest uppercase">
+                <Phone className="h-4 w-4 text-[#C17F59] flex-shrink-0" />
+                <span className="text-white/60">0724415820</span>
               </li>
-              <li className="flex items-center space-x-2 text-sm">
-                <Mail className="h-4 w-4 text-accent flex-shrink-0" />
-                <span className="text-background/70">karibu@excursiaconnect.com</span>
+              <li className="flex items-center space-x-3 text-xs tracking-widest">
+                <Mail className="h-4 w-4 text-[#C17F59] flex-shrink-0" />
+                <span className="text-white/60 lowercase">karibu@excursiaconnect.com</span>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-background/20 pt-8 text-center">
+        <div className="border-t border-background/20 pt-4 text-center">
           <p className="text-sm text-background/70">
             &copy; {new Date().getFullYear()} Excursia Connect. All rights reserved.
           </p>

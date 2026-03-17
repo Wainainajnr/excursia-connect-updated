@@ -16,6 +16,8 @@ export default {
       fontFamily: {
         heading: ['Poppins', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
+        serif: ['"Playfair Display"', 'serif'],
+        luxury: ['"Playfair Display"', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -53,7 +55,10 @@ export default {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
+        lg: "1.25rem",
+        xl: "1.25rem",
+        "2xl": "1.25rem",
+        luxury: "1.25rem",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },

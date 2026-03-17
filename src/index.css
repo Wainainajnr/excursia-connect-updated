@@ -9,72 +9,69 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --foreground: 0 0% 0%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 0 0% 0%;
 
-    /* Primary: Teal #0f766e */
-    --primary: 174 79% 26%;
+    /* Primary: Deep Navy #1B2A4A */
+    --primary: 221 46% 20%;
     --primary-foreground: 0 0% 100%;
     
-    /* Accent: Cyan #06b6d4 */
-    --accent: 188 95% 43%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent: Warm Copper #C17F59 */
+    --accent: 22 46% 55%;
+    --accent-foreground: 0 0% 0%;
     
-    /* Secondary/Warm: Amber #f59e0b */
-    --secondary: 38 92% 50%;
-    --secondary-foreground: 222 47% 11%;
+    /* Secondary: Warm Neutral */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 174 79% 26%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 221 46% 20%;
 
-    --radius: 0.75rem;
+    --radius: 1.25rem; /* 20px */
     
-    /* Custom travel theme colors */
-    --hero-overlay: 222 47% 11% / 0.4;
-    --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --card-shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    /* Custom luxury theme colors */
+    --hero-overlay: 0 0% 0% / 0.3;
+    --card-shadow: none;
+    --card-shadow-hover: 0 20px 40px -10px rgb(0 0 0 / 0.1);
   }
 
   .dark {
-    --background: 222 47% 11%;
+    --background: 0 0% 3%;
     --foreground: 0 0% 98%;
 
-    --card: 222 47% 15%;
+    --card: 0 0% 7%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 222 47% 15%;
+    --popover: 0 0% 7%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 174 79% 35%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 0%;
 
-    --accent: 188 95% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 43 89% 61%;
+    --accent-foreground: 0 0% 0%;
 
-    --secondary: 38 92% 55%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 174 79% 35%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 98%;
   }
 }
 
@@ -108,12 +105,7 @@ All colors MUST be HSL.
 
   /* Card hover effects */
   .destination-card {
-    @apply transition-all duration-300 hover:-translate-y-2;
-    box-shadow: var(--card-shadow);
-  }
-
-  .destination-card:hover {
-    box-shadow: var(--card-shadow-hover);
+    @apply transition-all duration-300;
   }
 
   /* Header scroll effect */
@@ -127,13 +119,13 @@ All colors MUST be HSL.
 
   /* Smooth animations */
   .animate-fade-in {
-    animation: fadeIn 0.6s ease-in;
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
     }
     to {
       opacity: 1;
@@ -143,10 +135,10 @@ All colors MUST be HSL.
 
   /* Newsletter and forms */
   .input-field {
-    @apply w-full px-4 py-3 rounded-full border-2 border-input focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all;
+    @apply w-full px-6 py-4 rounded-full border border-input focus:border-black focus:ring-0 outline-none transition-all;
   }
 
   .btn-pill {
-    @apply px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 active:scale-95;
+    @apply px-8 py-4 rounded-full font-bold tracking-widest uppercase transition-all duration-300 hover:scale-105 active:scale-95;
   }
 }

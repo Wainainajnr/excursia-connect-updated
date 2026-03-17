@@ -21,39 +21,44 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-r from-primary to-accent">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-background/20 rounded-full mb-6">
-            <Mail className="h-8 w-8 text-white" />
-          </div>
+    <section className="py-24 bg-[#1B2A4A] overflow-hidden relative">
+      {/* Decorative background element */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#C17F59] rounded-full blur-[150px] opacity-10 -mr-48 -mt-48" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-[150px] opacity-5 -ml-48 -mb-48" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
+          <span className="text-[10px] font-bold tracking-[0.4em] text-[#C17F59] uppercase mb-8 block">
+            The Inner Circle
+          </span>
           
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
-            Get Exclusive Travel Deals
+          <h2 className="text-4xl md:text-6xl font-luxury text-white mb-8 leading-tight">
+            Journey with <span className="italic font-serif">Distinction</span>
           </h2>
-          <p className="text-white/90 text-lg mb-8">
-            Subscribe to our newsletter and receive amazing offers, travel tips, and destination inspiration directly to your inbox.
+          
+          <p className="text-white/60 text-lg md:text-xl font-serif italic mb-12 max-w-2xl mx-auto">
+            Subscribe to receive curated travel stories, exclusive private offers, and destination inspiration.
           </p>
-
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
+          
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto mb-10">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email address"
-              className="input-field flex-1 bg-white"
+              placeholder="Your email address"
+              className="w-full sm:flex-1 px-8 py-6 rounded-full bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:border-[#C17F59] focus:ring-0 outline-none transition-all duration-300"
               aria-label="Email address"
             />
             <Button 
               type="submit"
-              className="btn-pill bg-secondary text-secondary-foreground hover:bg-secondary/90 whitespace-nowrap"
+              className="rounded-full bg-[#C17F59] text-black hover:bg-[#C17F59]/90 px-12 py-6 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 whitespace-nowrap shadow-xl"
             >
-              Subscribe Now
+              SUBSCRIBE
             </Button>
           </form>
-
-          <p className="text-white/70 text-sm mt-4">
-            We respect your privacy. Unsubscribe at any time.
+          
+          <p className="text-white/30 text-[10px] uppercase tracking-widest">
+            Discretion guaranteed. Unsubscribe at any time.
           </p>
         </div>
       </div>
