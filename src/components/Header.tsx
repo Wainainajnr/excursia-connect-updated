@@ -44,10 +44,8 @@ const Header = () => {
           <Link to="/" className="flex items-center group py-1 lg:py-4 shrink-0 overflow-hidden -ml-8 lg:-ml-16">
             <ExcursiaLogo 
               className={`w-auto group-hover:scale-105 transition-all duration-700 ${
-                !isHomePage 
+                isHeaderCompact 
                   ? 'h-18 sm:h-26 lg:h-34 max-h-[8.5rem]' 
-                  : isScrolled
-                  ? 'h-16 sm:h-20 lg:h-28 max-h-[5rem]'
                   : 'h-24 sm:h-40 lg:h-56 max-h-[14rem]'
               }`}
               textColor={isHeaderCompact ? "#000000" : "white"}

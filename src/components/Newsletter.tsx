@@ -21,26 +21,26 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="py-24 bg-[#1B2A4A] overflow-hidden relative">
+    <section className="py-16 bg-[#1B2A4A] overflow-hidden relative">
       {/* Decorative background element */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#C17F59] rounded-full blur-[150px] opacity-10 -mr-48 -mt-48" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-[150px] opacity-5 -ml-48 -mb-48" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <span className="text-[10px] font-bold tracking-[0.4em] text-[#C17F59] uppercase mb-8 block">
+          <span className="text-[10px] font-bold tracking-[0.4em] text-[#C17F59] uppercase mb-4 block">
             The Inner Circle
           </span>
           
-          <h2 className="text-4xl md:text-6xl font-luxury text-white mb-8 leading-tight">
+          <h2 className="text-4xl md:text-6xl font-luxury text-white mb-6 leading-tight">
             Journey with <span className="italic font-serif">Distinction</span>
           </h2>
           
-          <p className="text-white/60 text-lg md:text-xl font-serif italic mb-12 max-w-2xl mx-auto">
+          <p className="text-white/60 text-lg md:text-xl font-serif italic mb-8 max-w-2xl mx-auto">
             Subscribe to receive curated travel stories, exclusive private offers, and destination inspiration.
           </p>
           
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto mb-10">
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto mb-8">
             <input
               type="email"
               value={email}
