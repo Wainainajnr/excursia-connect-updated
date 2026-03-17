@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Facebook, Instagram } from 'lucide-react';
 import Layout from '@/components/Layout';
 import Newsletter from '@/components/Newsletter';
 import { Button } from '@/components/ui/button';
@@ -263,8 +263,10 @@ const Contact = () => {
                     href="#"
                     className="flex items-center space-x-3 p-3 rounded-lg hover:bg-muted transition-colors"
                   >
-                    <Twitter className="h-5 w-5 text-accent" />
-                    <span>Twitter</span>
+                    <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current text-accent">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                    <span>X</span>
                   </a>
                   <a 
                     href="#"
@@ -272,13 +274,6 @@ const Contact = () => {
                   >
                     <Instagram className="h-5 w-5 text-accent" />
                     <span>Instagram</span>
-                  </a>
-                  <a 
-                    href="#"
-                    className="flex items-center space-x-3 p-3 rounded-lg hover:bg-muted transition-colors"
-                  >
-                    <Linkedin className="h-5 w-5 text-accent" />
-                    <span>LinkedIn</span>
                   </a>
                 </div>
               </div>
