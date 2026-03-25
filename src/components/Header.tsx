@@ -21,7 +21,16 @@ const Header = () => {
 
   const navItems = [
     { path: '/', label: 'Home' },
-    { path: '/destinations', label: 'Destinations' },
+    { 
+      path: '/destinations', 
+      label: 'Destinations',
+      subItems: [
+        { label: 'Nairobi Experiences', path: '/destinations?category=Nairobi Experiences' },
+        { label: 'Safaris', path: '/destinations?category=Safaris' },
+        { label: 'Beach Getaways', path: '/destinations?category=Beach Getaways' },
+        { label: 'Adventure Activities', path: '/destinations?category=Adventure Activities' },
+      ]
+    },
     { path: '/relocation-offers', label: 'Relocation & Offers' },
     { path: '/about', label: 'About' },
     { path: '/contact', label: 'Contact Us' },
@@ -38,7 +47,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-4">
         <div className={`flex items-center justify-between transition-all duration-500 pt-3 lg:pt-0 ${
-          isHeaderCompact ? 'h-20 sm:h-28 lg:h-36' : 'h-32 sm:h-48 lg:h-64'
+          isHeaderCompact ? 'h-24 sm:h-32 lg:h-36' : 'h-32 sm:h-48 lg:h-64'
         }`}>
           {/* Logo */}
           <Link to="/" className="flex items-center group py-1 lg:py-4 shrink-0 overflow-hidden -ml-8 lg:-ml-16">
@@ -55,21 +64,38 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`text-[10px] font-bold tracking-[0.2em] uppercase transition-colors ${
-                  location.pathname === item.path
-                    ? isHeaderCompact
-                      ? 'text-[#1B2A4A]'
-                      : 'text-white'
-                    : isHeaderCompact
-                    ? 'text-foreground/70 hover:text-[#1B2A4A]'
-                    : 'text-white/80 hover:text-white'
-                }`}
-              >
-                {item.label}
-              </Link>
+              <div key={item.path} className="relative group">
+                <Link
+                  to={item.path}
+                  className={`text-[10px] font-bold tracking-[0.2em] uppercase transition-colors py-4 ${
+                    location.pathname === item.path
+                      ? isHeaderCompact
+                        ? 'text-[#1B2A4A]'
+                        : 'text-white'
+                      : isHeaderCompact
+                      ? 'text-foreground/70 hover:text-[#1B2A4A]'
+                      : 'text-white/80 hover:text-white'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+                
+                {item.subItems && (
+                  <div className="absolute top-full left-0 w-64 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    <div className="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden py-2">
+                      {item.subItems.map((sub) => (
+                        <Link
+                          key={sub.path}
+                          to={sub.path}
+                          className="block px-6 py-3 text-[10px] font-bold tracking-[0.1em] uppercase text-gray-600 hover:text-[#C17F59] hover:bg-gray-50 transition-colors"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
             <Button 
               className="rounded-full bg-[#1B2A4A] text-white hover:bg-[#1B2A4A]/90 px-8 py-6 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105"
@@ -97,18 +123,33 @@ const Header = () => {
         {isMobileMenuOpen && (
           <nav className="lg:hidden pb-6 space-y-2 bg-background rounded-b-2xl shadow-xl px-4">
             {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`block px-4 py-3 text-xs font-bold tracking-[0.15em] uppercase rounded-xl transition-colors ${
-                  location.pathname === item.path
-                    ? 'text-[#1B2A4A] bg-gray-100'
-                    : 'text-foreground/70 hover:text-[#1B2A4A] hover:bg-gray-50'
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
+              <div key={item.path}>
+                <Link
+                  to={item.path}
+                  className={`block px-4 py-3 text-xs font-bold tracking-[0.15em] uppercase rounded-xl transition-colors ${
+                    location.pathname === item.path
+                      ? 'text-[#1B2A4A] bg-gray-100'
+                      : 'text-foreground/70 hover:text-[#1B2A4A] hover:bg-gray-50'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+                {item.subItems && (
+                  <div className="pl-8 mt-1 space-y-1">
+                    {item.subItems.map((sub) => (
+                      <Link
+                        key={sub.path}
+                        to={sub.path}
+                        className="block px-4 py-2 text-[9px] font-bold tracking-[0.1em] uppercase text-gray-500 hover:text-[#C17F59] transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <div className="pt-2">
                <Button 

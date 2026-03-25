@@ -56,6 +56,37 @@ const About = () => {
         </div>
       </section>
 
+
+      {/* Introduction/Vision Section */}
+      <section className="py-20 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-7xl mx-auto text-center animate-fade-in px-8 py-12 md:px-20 rounded-luxury bg-[#F9F9F9] border border-gray-100 shadow-sm">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+              <div className="lg:col-span-3 text-left">
+                <span className="text-[10px] font-bold tracking-[0.4em] text-[#C17F59] uppercase mb-6 block">
+                  The Vision
+                </span>
+                <h2 className="text-3xl md:text-5xl font-luxury text-[#1B2A4A] mb-8 leading-tight">
+                  Where epic travel meets <span className="italic">epic expectations</span>.
+                </h2>
+                <div className="w-24 h-1 bg-[#C17F59] mb-8 rounded-full" />
+                <p className="text-lg text-muted-foreground leading-relaxed font-serif italic tracking-wide">
+                  From thrilling safaris to peaceful beach retreats, from cultural explorations to seamless relocation services—we're your partner in every adventure.
+                </p>
+              </div>
+              
+              <div className="lg:col-span-2">
+                <div className="relative p-8 border-l-2 border-[#C17F59]/30">
+                  <p className="text-xl md:text-2xl text-[#1B2A4A] font-luxury italic leading-relaxed py-2">
+                    "We specialize in creating unforgettable journeys that transform the way you experience the world."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Company Story */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
