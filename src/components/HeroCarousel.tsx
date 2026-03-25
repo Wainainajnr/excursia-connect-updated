@@ -66,7 +66,7 @@ const HeroCarousel = () => {
                   
                   <Button 
                     className="rounded-full bg-white text-black hover:bg-white/90 px-12 py-8 text-xs font-bold tracking-[0.3em] uppercase transition-all duration-300 hover:scale-105 shadow-2xl"
-                    onClick={() => navigate('/contact')}
+                    onClick={() => navigate('/destinations')}
                   >
                     {slide.cta}
                   </Button>
